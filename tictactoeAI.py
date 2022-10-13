@@ -127,9 +127,53 @@ def drawXO(row, col):
         posy = height*2/3 +30
     
     TTT[row-1][col-1] = XO
+    # Switch turn
+    if(XO == 'x'):
+        screen.blit(x_image, (posy, posx))
+        XO = 'o'
+    else:
+        screen.blit(o_img, (posy, posx))
+        XO = 'x'
+    pg.display.update()
 
+def userClick():
     
+    # Get cordinates of mouse click
+    x,y = pg.mouse.get_pos()
+
+    # Get clicked column (1-3)
+    if (x < width/3):
+        col = 1
+    elif (x < width*2/3):
+        col = 2
+    elif (x < width):
+        col = 3
+    else:
+        col = None
+
+    # Get clicked row
+    if ( y < height/3):
+        row = 1
+    elif (y < height*2/3):
+        row = 2
+    elif (y < height):
+        row = 3
+    else:
+        row = None
     
+    if(row and col and TTT[row-1][col-1] is None):
+        drawXO(row, col)
+        check_win()
+
+def reset_game():
+    global TTT, winner, XO, draw
+    time.sleep(1)
+    XO = 'x'
+    winner = None
+    draw = False
+    TTT = [[None]*3,[None]*3,[None]*3]
+    game_opening()
+
 
 game_opening()
 
@@ -139,5 +183,10 @@ while(True):
         if event.type == QUIT:
             pg.quit()
             sys.exit()
+        elif event.type ==  MOUSEBUTTONDOWN:
+            # Draw X,O if you user clicked
+            userClick()
+            if(winner or draw):
+                reset_game()
     pg.display.update()
     CLOCK.tick(fps)
