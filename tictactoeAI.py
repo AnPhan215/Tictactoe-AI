@@ -1,5 +1,3 @@
-from textwrap import fill
-from turtle import width
 import pygame as pg, sys
 from pygame.locals import *
 import time
@@ -46,7 +44,29 @@ def game_opening():
     # Drawing horizontal lines
     pg.draw.line(screen, line_color, (0,height/3), (width, height/3), 5)
     pg.draw.line(screen, line_color, (0, height*2/3), (width, height*2/3), 5)
-    pg.draw.rect(screen, line_color, (10, 50, 100, 80))
+    # pg.draw.rect(screen, line_color, (10, 50, 100, 80))
+
+def draw_status():
+    global draw
+
+    if winner is None:
+        message = XO.upper() + "'s Turn"
+    else:
+        message = winner.upper() + " Won!"
+    if draw:
+        message = 'Game Draw!'
+        
+    font = pg.font.Font(None, 30)
+    text = font.render(message, 1, (255, 255, 255))
+
+    # Copy the render message to the board
+
+    screen.fill ((0,0,0), (0, 400, 500, 100))
+    text_rect = text.get_rect(center=(width/2, 500-50))
+    screen.blit(text, text_rect)
+    pg.display.update()
+    
+
 game_opening()
 
 # Run the game loop forever
