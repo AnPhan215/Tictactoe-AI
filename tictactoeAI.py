@@ -220,11 +220,11 @@ def get_best_move(board, player, turn, alpha, beta):
     # If AI won
     if finish == "Done" and win == 'o':
         # Score 1 if AI won
-        return (1*turn, 0)
+        return (turn, 0)
     # If Human won
     elif finish == "Done" and win == 'x':
         # Score -1 if Human won
-        return (-1*turn, 0)
+        return (-turn, 0)
     # If Draw
     elif finish == "Draw":
         # Draw 0 if Draw
