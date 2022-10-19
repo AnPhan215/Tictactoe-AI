@@ -11,7 +11,7 @@ In this program, I coded an AI to fight against players by using heuristic evalu
 
 EXPLAINING:
 
-For this game application, I have used ``` pygame``` library from python. Accredit to [TechVidvan](https://techvidvan.com/tutorials/python-game-project-tic-tac-toe/) that helps me to understand more about ```pygame```.
+For this game application, I have used ``` pygame``` library from python. Accredit to [TechVidvan](https://techvidvan.com/tutorials/python-game-project-tic-tac-toe/) that helps me understand more about ```pygame``` and [Rohit Agrawal](https://towardsdatascience.com/lets-beat-games-using-a-bunch-of-code-part-1-tic-tac-toe-1543e981fec1) to helps me understand more about minimax.
 
 A first few step like:
 - Initializing pygame window
